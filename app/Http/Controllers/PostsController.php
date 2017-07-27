@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Rules\SimpleRule;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -15,7 +16,7 @@ class PostsController extends Controller
     public function store()
     {
         $post = \request()->validate([
-            'title' => 'required',
+            'title' => new SimpleRule(),
             'body' => 'required'
         ]);
         Post::create($post);

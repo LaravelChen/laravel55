@@ -9,6 +9,13 @@
 <body>
 <div class="container" style="margin-top: 100px">
     <div class="col-md-8 col-md-offset-2">
+        @if($errors->any())
+            <ul class="list-group">
+                @foreach($errors->all() as $error)
+                    <li class="list-group-item list-group-item-danger">{{$error}}</li>
+                @endforeach
+            </ul>
+        @endif
         <form method="POST" action="{{url('/posts')}}" accept-charset="UTF-8">
             {{csrf_field()}}
             <div class="form-group">
