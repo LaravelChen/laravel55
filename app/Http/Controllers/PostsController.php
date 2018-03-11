@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+//use App\Http\Facades\DemoFacade;
 use App\Post;
 use App\Rules\SimpleRule;
-use Illuminate\Http\Request;
+
+//use Facades\ {
+//  App\Http\Com\Demo
+//};
 
 class PostsController extends Controller
 {
@@ -16,10 +20,18 @@ class PostsController extends Controller
     public function store()
     {
         $post = \request()->validate([
-            'title' => new SimpleRule(),
-            'body' => 'required'
+            'title' => [
+                'required',
+                new SimpleRule(),
+            ],
+            'body' => 'required',
         ]);
         Post::create($post);
-        return 'Done';
+        return \request()->get('_token');
+    }
+
+    public function facade()
+    {
+        return \DemoFacade::demo();
     }
 }

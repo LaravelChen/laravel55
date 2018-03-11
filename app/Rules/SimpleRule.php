@@ -16,7 +16,7 @@ class SimpleRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        return strlen($value) ==5;
+        return strlen($value) !=5;
     }
 
     /**

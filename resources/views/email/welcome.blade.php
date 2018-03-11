@@ -1,7 +1,7 @@
 @component('mail::message')
 # Introduction
 
-你好啊！LaravelChen!
+Hello!Laravel5.5!
 
 @component('mail::button', ['url' => ''])
 Button Text
